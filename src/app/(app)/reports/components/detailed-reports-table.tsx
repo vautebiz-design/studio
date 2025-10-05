@@ -20,7 +20,7 @@ const reportData = [
   { id: 'ER002', source: 'Power Plant B', industry: 'Energy', date: '2024-03-10', amount: 75000, status: 'Verified' },
   { id: 'ER003', source: 'Farm C', industry: 'Agriculture', date: '2024-03-01', amount: 12000, status: 'Pending' },
   { id: 'ER004', source: 'Logistics Hub D', industry: 'Transportation', date: '2024-02-28', amount: 30000, status: 'Verified' },
-  { id savory: 'ER005', source: 'Waste Facility E', industry: 'Waste Mgmt', date: '2024-02-20', amount: 18000, status: 'Rejected' },
+  { id: 'ER005', source: 'Waste Facility E', industry: 'Waste Mgmt', date: '2024-02-20', amount: 18000, status: 'Rejected' },
 ];
 
 
