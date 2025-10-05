@@ -2,7 +2,7 @@
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ChartTooltipContent } from '@/components/ui/chart';
+import { ChartTooltipContent, ChartContainer, type ChartConfig } from '@/components/ui/chart';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const data = [
@@ -20,6 +20,14 @@ const data = [
   { name: 'Dec 23', "Index Score": 85 },
   { name: 'Feb 24', "Index Score": 88 },
 ];
+
+const chartConfig = {
+  "Index Score": {
+    label: "Index Score",
+    color: "hsl(var(--primary))",
+  },
+} satisfies ChartConfig;
+
 
 export default function HistoricalTrendAnalysis() {
   return (
@@ -39,6 +47,7 @@ export default function HistoricalTrendAnalysis() {
       </CardHeader>
       <CardContent>
         <div className="h-[300px]">
+        <ChartContainer config={chartConfig} className="w-full h-full">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart
               data={data}
@@ -50,9 +59,10 @@ export default function HistoricalTrendAnalysis() {
               <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} />
               <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false}/>
               <Tooltip content={<ChartTooltipContent />} cursor={{fill: 'hsl(var(--accent) / 0.3)'}}/>
-              <Line type="monotone" dataKey="Index Score" stroke="hsl(var(--primary))" strokeWidth={2} dot={false} activeDot={{ r: 6 }}/>
+              <Line type="monotone" dataKey="Index Score" stroke="var(--color-Index Score)" strokeWidth={2} dot={false} activeDot={{ r: 6 }}/>
             </LineChart>
           </ResponsiveContainer>
+          </ChartContainer>
         </div>
       </CardContent>
     </Card>
