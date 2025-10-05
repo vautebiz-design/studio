@@ -9,6 +9,10 @@ import {
   MapPin,
   PanelLeft,
   ShieldCheck,
+  CircleDollarSign,
+  BrainCircuit,
+  Settings,
+  Scale
 } from 'lucide-react'
 import {
   Sidebar,
@@ -25,8 +29,12 @@ import { useSidebar } from '@/components/ui/sidebar'
 
 const industryNav = [
   { href: '/dashboard', label: 'Dashboard', icon: BarChart2 },
-  { href: '/map', label: 'Blue Carbon Map', icon: MapPin },
-  { href: '/reports', label: 'Reports', icon: FileText },
+  { href: '/reports', label: 'Emission Reports', icon: FileText },
+  { href: '/map', label: 'Plantation Tracker', icon: MapPin },
+  { href: '/carbon-credits', label: 'Carbon Credits', icon: CircleDollarSign },
+  { href: '/carbon-neutrality', label: 'Carbon Neutrality Index', icon: Scale },
+  { href: '/ai-predictions', label: 'AI/ML Predictions', icon: BrainCircuit },
+  { href: '/settings', label: 'Settings', icon: Settings },
 ]
 
 const adminNav = [
@@ -37,7 +45,7 @@ const adminNav = [
 export default function AppSidebar() {
   const pathname = usePathname()
   const { user } = useAuth()
-  const { state, toggleSidebar } = useSidebar();
+  const { toggleSidebar } = useSidebar();
   
   const navItems = user?.role === 'admin' ? adminNav : industryNav
 
@@ -49,7 +57,7 @@ export default function AppSidebar() {
                 <Button variant="ghost" size="icon" className="h-8 w-8 text-primary hover:bg-primary/10">
                     <Leaf className="h-5 w-5" />
                 </Button>
-                <span className="font-semibold text-lg text-foreground">BlueBalance</span>
+                <span className="font-semibold text-lg text-foreground">BlueCred</span>
             </div>
             <Button variant="ghost" size="icon" className="h-8 w-8" onClick={toggleSidebar}>
                 <PanelLeft />
@@ -63,7 +71,7 @@ export default function AppSidebar() {
             <SidebarMenuItem key={item.label}>
               <Link href={item.href} passHref>
                 <SidebarMenuButton
-                  isActive={pathname === item.href}
+                  isActive={pathname.startsWith(item.href)}
                   tooltip={item.label}
                   asChild
                 >
