@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
-import { ChartTooltipContent } from '@/components/ui/chart';
+import { ChartTooltipContent, ChartContainer, type ChartConfig } from '@/components/ui/chart';
 
 const absorptionData = [
   { name: 'Jan', Actual: 160, Predicted: 165 },
@@ -34,6 +34,28 @@ const emissionData = [
     { name: 'Dec', Actual: 200, Predicted: 215 },
 ];
 
+const absorptionChartConfig = {
+    "Actual": {
+        label: "Actual Absorption",
+        color: "hsl(var(--primary))",
+    },
+    "Predicted": {
+        label: "Predicted Absorption",
+        color: "hsl(var(--primary))",
+    }
+} satisfies ChartConfig;
+
+const emissionChartConfig = {
+    "Actual": {
+        label: "Actual Emissions",
+        color: "hsl(var(--foreground))",
+    },
+    "Predicted": {
+        label: "Predicted Emissions",
+        color: "hsl(var(--foreground))",
+    }
+} satisfies ChartConfig;
+
 
 export default function LongTermProjections() {
   return (
@@ -45,33 +67,37 @@ export default function LongTermProjections() {
             <div>
                 <h3 className="font-semibold mb-4 text-center">Carbon Absorption Forecast</h3>
                 <div className="h-[300px]">
-                    <ResponsiveContainer width="100%" height="100%">
-                        <LineChart data={absorptionData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
-                        <CartesianGrid strokeDasharray="3 3" vertical={false}/>
-                        <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} />
-                        <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false}/>
-                        <Tooltip content={<ChartTooltipContent />} cursor={{fill: 'hsl(var(--accent) / 0.3)'}}/>
-                        <Legend iconSize={10} wrapperStyle={{fontSize: "12px", paddingTop: '20px'}}/>
-                        <Line type="monotone" dataKey="Actual" stroke="hsl(var(--primary))" strokeWidth={2} name="Actual Absorption" dot={false} />
-                        <Line type="monotone" dataKey="Predicted" stroke="hsl(var(--primary))" strokeDasharray="5 5" strokeWidth={2} name="Predicted Absorption" dot={false} />
-                        </LineChart>
-                    </ResponsiveContainer>
+                    <ChartContainer config={absorptionChartConfig} className="w-full h-full">
+                        <ResponsiveContainer width="100%" height="100%">
+                            <LineChart data={absorptionData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
+                            <CartesianGrid strokeDasharray="3 3" vertical={false}/>
+                            <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} />
+                            <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false}/>
+                            <Tooltip content={<ChartTooltipContent />} cursor={{fill: 'hsl(var(--accent) / 0.3)'}}/>
+                            <Legend iconSize={10} wrapperStyle={{fontSize: "12px", paddingTop: '20px'}}/>
+                            <Line type="monotone" dataKey="Actual" stroke="var(--color-Actual)" strokeWidth={2} name="Actual Absorption" dot={false} />
+                            <Line type="monotone" dataKey="Predicted" stroke="var(--color-Predicted)" strokeDasharray="5 5" strokeWidth={2} name="Predicted Absorption" dot={false} />
+                            </LineChart>
+                        </ResponsiveContainer>
+                    </ChartContainer>
                 </div>
             </div>
             <div>
                 <h3 className="font-semibold mb-4 text-center">Carbon Emission Forecast</h3>
                 <div className="h-[300px]">
-                <ResponsiveContainer width="100%" height="100%">
-                        <LineChart data={emissionData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
-                        <CartesianGrid strokeDasharray="3 3" vertical={false}/>
-                        <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} />
-                        <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false}/>
-                        <Tooltip content={<ChartTooltipContent />} cursor={{fill: 'hsl(var(--accent) / 0.3)'}}/>
-                        <Legend iconSize={10} wrapperStyle={{fontSize: "12px", paddingTop: '20px'}}/>
-                        <Line type="monotone" dataKey="Actual" stroke="hsl(var(--foreground))" strokeWidth={2} name="Actual Emissions" dot={false} />
-                        <Line type="monotone" dataKey="Predicted" stroke="hsl(var(--foreground))" strokeDasharray="5 5" strokeWidth={2} name="Predicted Emissions" dot={false} />
-                        </LineChart>
-                    </ResponsiveContainer>
+                <ChartContainer config={emissionChartConfig} className="w-full h-full">
+                    <ResponsiveContainer width="100%" height="100%">
+                            <LineChart data={emissionData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
+                            <CartesianGrid strokeDasharray="3 3" vertical={false}/>
+                            <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} />
+                            <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false}/>
+                            <Tooltip content={<ChartTooltipContent />} cursor={{fill: 'hsl(var(--accent) / 0.3)'}}/>
+                            <Legend iconSize={10} wrapperStyle={{fontSize: "12px", paddingTop: '20px'}}/>
+                            <Line type="monotone" dataKey="Actual" stroke="var(--color-Actual)" strokeWidth={2} name="Actual Emissions" dot={false} />
+                            <Line type="monotone" dataKey="Predicted" stroke="var(--color-Predicted)" strokeDasharray="5 5" strokeWidth={2} name="Predicted Emissions" dot={false} />
+                            </LineChart>
+                        </ResponsiveContainer>
+                    </ChartContainer>
                 </div>
             </div>
         </CardContent>
