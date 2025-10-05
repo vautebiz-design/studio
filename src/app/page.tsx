@@ -11,7 +11,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 
 function WidgetSkeleton() {
-  return <Skeleton className="h-full w-full" />;
+  return <Skeleton className="h-full w-full min-h-[200px]" />;
 }
 
 export default function DashboardPage() {
@@ -26,36 +26,38 @@ export default function DashboardPage() {
         <CarbonStats />
       </Suspense>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <div className="lg:col-span-2">
-          <Suspense fallback={<WidgetSkeleton />}>
-            <EmissionChart />
-          </Suspense>
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        {/* Left column */}
+        <div className="lg:col-span-2 space-y-6">
+            <Suspense fallback={<WidgetSkeleton />}>
+              <EmissionChart />
+            </Suspense>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Suspense fallback={<WidgetSkeleton />}>
+                    <MapTrackerWidget />
+                </Suspense>
+                 <Suspense fallback={<WidgetSkeleton />}>
+                    <CarbonCreditsWidget />
+                </Suspense>
+            </div>
         </div>
-        <div className="space-y-6">
-          <Suspense fallback={<WidgetSkeleton />}>
-            <Link href="/carbon-neutrality">
-              <CarbonNeutralityWidget />
-            </Link>
-          </Suspense>
-          <Suspense fallback={<WidgetSkeleton />}>
-            <Link href="/ai-predictions">
-              <AIPredictionsWidget />
-            </Link>
-          </Suspense>
-        </div>
-      </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <Suspense fallback={<WidgetSkeleton />}>
-          <MapTrackerWidget />
-        </Suspense>
-        <Suspense fallback={<WidgetSkeleton />}>
-          <CarbonCreditsWidget />
-        </Suspense>
-        <Suspense fallback={<WidgetSkeleton />}>
-          <AIEfficiencyTool />
-        </Suspense>
+        {/* Right column */}
+        <div className="lg:col-span-1 space-y-6">
+            <Suspense fallback={<WidgetSkeleton />}>
+                <Link href="/carbon-neutrality">
+                    <CarbonNeutralityWidget />
+                </Link>
+            </Suspense>
+            <Suspense fallback={<WidgetSkeleton />}>
+                <Link href="/ai-predictions">
+                    <AIPredictionsWidget />
+                </Link>
+            </Suspense>
+            <Suspense fallback={<WidgetSkeleton />}>
+                <AIEfficiencyTool />
+            </Suspense>
+        </div>
       </div>
     </div>
   );
