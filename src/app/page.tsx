@@ -51,9 +51,7 @@ export default function DashboardPage() {
           <MapTrackerWidget />
         </Suspense>
         <Suspense fallback={<WidgetSkeleton />}>
-          <Link href="/carbon-credits" className="h-full">
-            <CarbonCreditsWidget />
-          </Link>
+          <CarbonCreditsWidget />
         </Suspense>
         <Suspense fallback={<WidgetSkeleton />}>
           <AIEfficiencyTool />

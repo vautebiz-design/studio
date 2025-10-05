@@ -2,10 +2,12 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Copy } from 'lucide-react';
+import Link from 'next/link';
 
 export default function CarbonCreditsWidget() {
   return (
     <Card className="h-full hover:border-primary transition-colors">
+      <Link href="/carbon-credits">
       <CardHeader>
         <CardTitle className="flex items-center justify-between text-base font-medium">
           <span>Carbon Credits Issued</span>
@@ -23,6 +25,7 @@ export default function CarbonCreditsWidget() {
           <p className="text-sm text-muted-foreground">Total Tonnage</p>
         </div>
       </CardContent>
+      </Link>
     </Card>
   );
 }
