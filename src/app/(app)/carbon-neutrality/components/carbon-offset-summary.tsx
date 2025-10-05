@@ -26,7 +26,7 @@ export default function CarbonOffsetSummary() {
                 <project.icon className="h-5 w-5 text-muted-foreground" />
                 <span className="text-sm">{project.name}</span>
               </div>
-              <span className="font-semibold text-sm">{project.tons.toLocaleString()} tons CO2e</span>
+              <span className="font-semibold text-sm">{project.tons.toLocaleString('en-US')} tons CO2e</span>
             </div>
           ))}
         </div>

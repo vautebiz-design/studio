@@ -43,7 +43,7 @@ export default function CarbonStats() {
           <ArrowUp className="h-4 w-4 text-destructive" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{stats.emissions.toLocaleString()} tons</div>
+          <div className="text-2xl font-bold">{stats.emissions.toLocaleString('en-US')} tons</div>
           <p className="text-xs text-muted-foreground">CO₂ equivalent</p>
         </CardContent>
       </Card>
@@ -53,7 +53,7 @@ export default function CarbonStats() {
           <ArrowDown className="h-4 w-4 text-accent" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{stats.absorption.toLocaleString()} tons</div>
+          <div className="text-2xl font-bold">{stats.absorption.toLocaleString('en-US')} tons</div>
           <p className="text-xs text-muted-foreground">CO₂ sequestered</p>
         </CardContent>
       </Card>

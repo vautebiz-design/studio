@@ -77,8 +77,8 @@ export default function DetailedIndustryPerformance() {
                             {item.change > 0 ? <ArrowUp className="h-4 w-4 mr-1" /> : <ArrowDown className="h-4 w-4 mr-1" />}
                             {Math.abs(item.change)}%
                         </TableCell>
-                        <TableCell>{item.emissions.toLocaleString()}</TableCell>
-                        <TableCell>{item.absorption.toLocaleString()}</TableCell>
+                        <TableCell>{item.emissions.toLocaleString('en-US')}</TableCell>
+                        <TableCell>{item.absorption.toLocaleString('en-US')}</TableCell>
                         <TableCell>
                             <Badge variant={getStatusVariant(item.status)}>{item.status}</Badge>
                         </TableCell>

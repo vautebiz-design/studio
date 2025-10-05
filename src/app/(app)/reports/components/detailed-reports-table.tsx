@@ -91,7 +91,7 @@ export default function DetailedReportsTable() {
                         <TableCell className="font-medium">{report.source}</TableCell>
                         <TableCell>{report.industry}</TableCell>
                         <TableCell>{report.date}</TableCell>
-                        <TableCell className="text-right">{report.amount.toLocaleString()}</TableCell>
+                        <TableCell className="text-right">{report.amount.toLocaleString('en-US')}</TableCell>
                         <TableCell>
                             <Badge variant={getStatusVariant(report.status)}>{report.status}</Badge>
                         </TableCell>

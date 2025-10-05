@@ -54,7 +54,7 @@ export default function TransactionsTable() {
                     <TableRow key={tx.id}>
                         <TableCell className="font-mono text-xs">{tx.id}</TableCell>
                         <TableCell className="font-medium">{tx.issuer}</TableCell>
-                        <TableCell>{tx.tonnage.toLocaleString()}</TableCell>
+                        <TableCell>{tx.tonnage.toLocaleString('en-US')}</TableCell>
                         <TableCell>{tx.issueDate}</TableCell>
                         <TableCell>
                             <Badge variant={getStatusVariant(tx.status)}>{tx.status}</Badge>

@@ -49,9 +49,9 @@ export default function DetailedPredictionData() {
                 {predictionData.map((row) => (
                     <TableRow key={row.period}>
                         <TableCell className="font-medium">{row.period}</TableCell>
-                        <TableCell>{row.absorption.toLocaleString()} T</TableCell>
-                        <TableCell>{row.emissions.toLocaleString()} T</TableCell>
-                        <TableCell>{row.netImpact.toLocaleString()} T</TableCell>
+                        <TableCell>{row.absorption.toLocaleString('en-US')} T</TableCell>
+                        <TableCell>{row.emissions.toLocaleString('en-US')} T</TableCell>
+                        <TableCell>{row.netImpact.toLocaleString('en-US')} T</TableCell>
                         <TableCell className="text-right">
                             <Badge variant={getConfidenceVariant(row.confidence)} className={cn(
                                 row.confidence === 'Medium' && 'bg-yellow-500 text-black',
