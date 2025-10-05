@@ -25,7 +25,7 @@ import { Button } from './ui/button'
 import { useSidebar } from '@/components/ui/sidebar'
 
 const navItems = [
-  { href: '/dashboard', label: 'Dashboard', icon: BarChart2 },
+  { href: '/', label: 'Dashboard', icon: BarChart2 },
   { href: '/reports', label: 'Emission Reports', icon: FileText },
   { href: '/map', label: 'Plantation Tracker', icon: TreePine },
   { href: '/carbon-credits', label: 'Carbon Credits', icon: CircleDollarSign },
@@ -64,7 +64,7 @@ export default function AppSidebar() {
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.label}>
-              <Link href={item.href} passHref>
+              <Link href={item.href} passHref legacyBehavior>
                 <SidebarMenuButton
                   isActive={pathname === item.href}
                   tooltip={item.label}
