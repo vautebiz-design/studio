@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import AIPredictionsWidget from './(app)/dashboard/components/ai-predictions-widget';
 import CarbonCreditsWidget from './(app)/dashboard/components/carbon-credits-widget';
 import CarbonNeutralityWidget from './(app)/dashboard/components/carbon-neutrality-widget';
@@ -14,14 +15,22 @@ export default function DashboardPage() {
       <div className="grid gap-6 lg:grid-cols-3">
         <NetPollutionWidget />
         <div className="space-y-6">
-          <CarbonCreditsWidget />
+          <Link href="/carbon-credits">
+            <CarbonCreditsWidget />
+          </Link>
           <IotDeviceStatusWidget />
         </div>
       </div>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <MapTrackerWidget />
-        <CarbonNeutralityWidget />
-        <AIPredictionsWidget />
+        <Link href="/map">
+          <MapTrackerWidget />
+        </Link>
+        <Link href="/carbon-neutrality">
+          <CarbonNeutralityWidget />
+        </Link>
+        <Link href="/ai-predictions">
+          <AIPredictionsWidget />
+        </Link>
       </div>
     </div>
   );
