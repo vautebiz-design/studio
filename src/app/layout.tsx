@@ -6,8 +6,8 @@ import AppHeader from "@/components/app-header";
 import { SidebarProvider } from "@/components/ui/sidebar";
 
 export const metadata: Metadata = {
-  title: 'BlueCred',
-  description: 'A blockchain-powered MRV system for blue-carbon ecosystems.',
+  title: 'BlueBalance',
+  description: 'A platform for tracking and managing blue carbon initiatives.',
 };
 
 export default function RootLayout({
@@ -28,7 +28,7 @@ export default function RootLayout({
             <AppSidebar />
             <div className="flex flex-col flex-1 min-h-screen">
               <AppHeader />
-              <main className="flex-1 p-4 md:p-8 bg-muted/30">
+              <main className="flex-1 p-4 md:p-8 bg-background">
                 {children}
               </main>
             </div>

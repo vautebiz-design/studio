@@ -10,7 +10,7 @@ import {
   BrainCircuit,
   Settings,
   Scale,
-  TreePine,
+  Map,
   ShieldCheck,
 } from 'lucide-react'
 import {
@@ -27,14 +27,14 @@ import { useSidebar } from '@/components/ui/sidebar'
 const navItems = [
   { href: '/', label: 'Dashboard', icon: BarChart2 },
   { href: '/reports', label: 'Emission Reports', icon: FileText },
-  { href: '/map', label: 'Plantation Tracker', icon: TreePine },
+  { href: '/map', label: 'Plantation Tracker', icon: Map },
   { href: '/carbon-credits', label: 'Carbon Credits', icon: CircleDollarSign },
   { href: '/carbon-neutrality', label: 'Carbon Neutrality Index', icon: Scale },
   { href: '/ai-predictions', label: 'AI/ML Predictions', icon: BrainCircuit },
-  { href: '/settings', label: 'Settings', icon: Settings },
 ];
 
-const adminNav = [
+const bottomNavItems = [
+    { href: '/settings', label: 'Settings', icon: Settings },
     { href: '/admin', label: 'Admin Console', icon: ShieldCheck },
 ]
 
@@ -42,7 +42,6 @@ export default function AppSidebar() {
   const pathname = usePathname()
   const { toggleSidebar, state } = useSidebar();
   
-  const items = navItems
 
   return (
     <Sidebar collapsible="icon" side="left" variant="sidebar">
@@ -53,32 +52,46 @@ export default function AppSidebar() {
                 <path d="M128,24a104,104,0,0,0,0,208c57.4,0,104-46.6,104-104S185.4,24,128,24Zm0,184a80,80,0,  0,1-80-80,78.8,78.8,0,0,1,22-54.4,80,80,0,0,1,112,0,78.8,78.8,0,0,1,22,54.4A80,80,0,0,1,128,208Z" opacity="0.2"/>
                 <path d="M128,24a104,104,0,1,0,104,104A104.2,104.2,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM128,40a88,88,0,0,0-76,46.7,86.6,86.6,0,0,0-12,41.3,88,88,0,0,0,176,0,86.6,86.6,0,0,0-12-41.3A88,88,0,0,0,128,40Z" fill="currentColor"/>
             </svg>
-            {state === 'expanded' && <span className="font-semibold text-lg text-foreground">BlueCred</span>}
+            {state === 'expanded' && <span className="font-semibold text-lg text-foreground">BlueBalance</span>}
         </div>
         <Button variant="ghost" size="icon" className="h-8 w-8 sm:hidden" onClick={toggleSidebar}>
             <PanelLeft />
             <span className="sr-only">Toggle Sidebar</span>
         </Button>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="flex-grow">
         <SidebarMenu>
-          {items.map((item) => {
-            const isActive = item.href === '/'
-              ? pathname === '/' || pathname === '/dashboard'
-              : pathname === item.href;
-
+          {navItems.map((item) => {
+            const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href);
             return (
               <SidebarMenuItem key={item.label}>
                 <Link href={item.href}>
                   <SidebarMenuButton
                     isActive={isActive}
                     tooltip={item.label}
-                    asChild
                   >
-                    <div>
                       <item.icon />
                       <span>{item.label}</span>
-                    </div>
+                  </SidebarMenuButton>
+                </Link>
+              </SidebarMenuItem>
+            );
+          })}
+        </SidebarMenu>
+      </SidebarContent>
+       <SidebarContent>
+       <SidebarMenu>
+       {bottomNavItems.map((item) => {
+            const isActive = pathname.startsWith(item.href);
+            return (
+              <SidebarMenuItem key={item.label}>
+                <Link href={item.href}>
+                  <SidebarMenuButton
+                    isActive={isActive}
+                    tooltip={item.label}
+                  >
+                      <item.icon />
+                      <span>{item.label}</span>
                   </SidebarMenuButton>
                 </Link>
               </SidebarMenuItem>

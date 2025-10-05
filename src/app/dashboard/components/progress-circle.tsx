@@ -1,12 +1,13 @@
+
 'use client';
 
-export function ProgressCircle({ value, size = 40 }: { value: number; size?: number }) {
+export function ProgressCircle({ value }: { value: number }) {
   const radius = 50;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (value / 100) * circumference;
 
   return (
-    <div className="relative" style={{ height: `${size}px`, width: `${size}px`}}>
+    <div className="relative h-40 w-40">
       <svg className="h-full w-full" viewBox="0 0 120 120">
         <circle
           className="text-muted/20"
@@ -32,7 +33,7 @@ export function ProgressCircle({ value, size = 40 }: { value: number; size?: num
         />
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className="text-sm font-bold">{value}%</span>
+        <span className="text-3xl font-bold">{value}%</span>
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -11,7 +12,6 @@ export default function CarbonCreditsWidget() {
           <span>Carbon Credits Issued</span>
           <Copy className="h-5 w-5 text-muted-foreground" />
         </CardTitle>
-        <CardDescription>Total credits generated from projects</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div>

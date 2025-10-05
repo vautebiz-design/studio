@@ -1,16 +1,7 @@
 'use client'
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
 import { Button } from '@/components/ui/button'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Bell, LogOut, PanelLeft, Search, UserCog, Moon, Sun } from 'lucide-react'
+import { Bell, PanelLeft, Search, Moon, Sun } from 'lucide-react'
 import { useSidebar } from '@/components/ui/sidebar'
 import { Input } from '@/components/ui/input'
 import { useState, useEffect } from 'react'
@@ -21,14 +12,20 @@ export default function AppHeader() {
 
   useEffect(() => {
     const root = window.document.documentElement;
-    setIsDarkMode(root.classList.contains('dark'));
+    const initialIsDark = root.classList.contains('dark');
+    setIsDarkMode(initialIsDark);
+
+    const observer = new MutationObserver(() => {
+        setIsDarkMode(root.classList.contains('dark'));
+    });
+    observer.observe(root, { attributes: true, attributeFilter: ['class'] });
+
+    return () => observer.disconnect();
   }, []);
 
 
   const toggleDarkMode = () => {
-    const root = window.document.documentElement;
-    root.classList.toggle('dark');
-    setIsDarkMode(root.classList.contains('dark'));
+    window.document.documentElement.classList.toggle('dark');
   }
 
 
@@ -38,16 +35,6 @@ export default function AppHeader() {
             <PanelLeft className="h-5 w-5" />
             <span className="sr-only">Toggle Menu</span>
         </Button>
-
-        <div className="hidden sm:flex items-center gap-4">
-             <Button variant="ghost" className="text-muted-foreground">Dashboard</Button>
-             <Button variant="ghost" className="text-muted-foreground">Emission Reports</Button>
-             <Button variant="ghost" className="text-muted-foreground">Plantation Tracker</Button>
-             <Button variant="ghost" className="text-muted-foreground">Carbon Credits</Button>
-             <Button variant="ghost" className="text-muted-foreground">Carbon Neutrality Index</Button>
-             <Button variant="ghost" className="text-muted-foreground">AI/ML Predictions</Button>
-             <Button variant="ghost" className="text-muted-foreground">Settings</Button>
-        </div>
         
       <div className="ml-auto flex items-center gap-4">
         <div className="relative hidden md:block">

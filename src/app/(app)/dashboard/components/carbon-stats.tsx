@@ -15,7 +15,7 @@ export default function CarbonStats() {
   useEffect(() => {
     // In a real app, this would be fetched data
     const data = MOCK_INDUSTRY_DATA[0];
-    const cni = (data.absorption_tons / data.emission_tons) * 100;
+    const cni = data.absorption_tons && data.emission_tons > 0 ? (data.absorption_tons / data.emission_tons) * 100 : 0;
     setStats({
       cni: Math.round(cni),
       emissions: data.emission_tons,
@@ -43,7 +43,7 @@ export default function CarbonStats() {
           <ArrowUp className="h-4 w-4 text-destructive" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{stats.emissions} tons</div>
+          <div className="text-2xl font-bold">{stats.emissions.toLocaleString()} tons</div>
           <p className="text-xs text-muted-foreground">CO₂ equivalent</p>
         </CardContent>
       </Card>
@@ -53,7 +53,7 @@ export default function CarbonStats() {
           <ArrowDown className="h-4 w-4 text-accent" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{stats.absorption} tons</div>
+          <div className="text-2xl font-bold">{stats.absorption.toLocaleString()} tons</div>
           <p className="text-xs text-muted-foreground">CO₂ sequestered</p>
         </CardContent>
       </Card>

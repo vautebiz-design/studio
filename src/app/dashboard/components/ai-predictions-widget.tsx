@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Line, ComposedChart, ResponsiveContainer, XAxis, YAxis, Tooltip } from 'recharts';
@@ -13,6 +14,7 @@ const data = [
   { month: 'Nov', emissions: 200, absorption: 240 },
   { month: 'Dec', emissions: 220, absorption: 260 },
   { month: 'Jan', emissions: 240, absorption: 280 },
+  { month: 'Feb 25', emissions: 280, absorption: 300 },
 ];
 
 export default function AIPredictionsWidget() {
@@ -25,14 +27,14 @@ export default function AIPredictionsWidget() {
         </CardTitle>
         <CardDescription>Future environmental trends</CardDescription>
       </CardHeader>
-      <CardContent className="h-[120px] w-full">
+      <CardContent className="h-[150px] w-full">
          <ResponsiveContainer width="100%" height="100%">
           <ComposedChart data={data} margin={{ top: 5, right: 10, left: -20, bottom: 0 }}>
             <XAxis dataKey="month" tick={{ fontSize: 12 }} tickLine={false} axisLine={false} />
             <YAxis tick={{ fontSize: 12 }} tickLine={false} axisLine={false} tickFormatter={(value) => `${value}k`}/>
             <Tooltip content={<ChartTooltipContent />} cursor={{fill: 'hsl(var(--accent) / 0.5)'}}/>
-            <Line type="monotone" dataKey="emissions" stroke="hsl(var(--destructive)/0.7)" strokeWidth={2} dot={false} name="Emissions" />
-            <Line type="monotone" dataKey="absorption" stroke="hsl(var(--accent))" strokeWidth={2} dot={false} name="Absorption" />
+            <Line type="monotone" dataKey="emissions" stroke="hsl(var(--foreground)/0.7)" strokeWidth={2} dot={false} name="Emissions" />
+            <Line type="monotone" dataKey="absorption" stroke="hsl(var(--primary))" strokeWidth={2} dot={false} name="Absorption" />
           </ComposedChart>
         </ResponsiveContainer>
       </CardContent>

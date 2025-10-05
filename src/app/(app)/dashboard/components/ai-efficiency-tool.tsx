@@ -45,13 +45,14 @@ export default function AIEfficiencyTool() {
       setPrediction(result);
     } catch (error) {
       console.error('AI prediction failed:', error);
+      // You might want to show an error to the user here
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <Card>
+    <Card className="h-full">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Bot className="h-6 w-6" />

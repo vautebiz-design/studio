@@ -1,3 +1,4 @@
+
 'use client'
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -15,12 +16,9 @@ export default function CarbonNeutralityWidget() {
           <TrendingUp className="h-5 w-5 text-muted-foreground" />
         </CardTitle>
       </CardHeader>
-      <CardContent className="flex items-center justify-center space-x-4">
-        <ProgressCircle value={percentage} size={60} />
-        <div className="flex flex-col">
-            <p className="text-2xl font-bold">{percentage}%</p>
-            <p className="text-xs text-muted-foreground">On track</p>
-        </div>
+      <CardContent className="flex flex-col items-center justify-center space-y-2 h-[calc(100%-4rem)]">
+        <ProgressCircle value={percentage} />
+        <p className="text-sm text-center">Progress towards the 2030 goal.</p>
       </CardContent>
     </Card>
   );
