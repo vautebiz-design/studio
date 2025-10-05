@@ -21,7 +21,6 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
 } from '@/components/ui/sidebar'
-import { useAuth } from '@/hooks/use-auth'
 import { Button } from './ui/button'
 import { useSidebar } from '@/components/ui/sidebar'
 
@@ -41,10 +40,9 @@ const adminNav = [
 
 export default function AppSidebar() {
   const pathname = usePathname()
-  const { user } = useAuth()
   const { toggleSidebar, state } = useSidebar();
   
-  const items = user?.role === 'admin' ? adminNav : navItems
+  const items = navItems
 
   return (
     <Sidebar collapsible="icon" side="left" variant="sidebar">

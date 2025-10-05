@@ -1,6 +1,5 @@
 'use client'
 
-import { useAuth } from '@/hooks/use-auth'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,7 +16,6 @@ import { Input } from '@/components/ui/input'
 import { useState, useEffect } from 'react'
 
 export default function AppHeader() {
-  const { user, logout, switchRole } = useAuth()
   const { toggleSidebar } = useSidebar()
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -67,31 +65,7 @@ export default function AppHeader() {
             <span className="sr-only">Notifications</span>
         </Button>
 
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" className="rounded-full">
-              <Avatar className="h-8 w-8">
-                <AvatarImage src={`https://avatar.vercel.sh/${user?.email}.png`} alt={user?.companyName} />
-                <AvatarFallback>{user ? user.companyName.charAt(0) : 'U'}</AvatarFallback>
-              </Avatar>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>{user?.companyName}</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => switchRole('industry')}>
-                Switch to Industry
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => switchRole('admin')}>
-                Switch to Admin
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={logout}>
-              <LogOut className="mr-2 h-4 w-4" />
-              <span>Logout</span>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <Button>Login</Button>
       </div>
     </header>
   )
