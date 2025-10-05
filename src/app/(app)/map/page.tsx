@@ -9,11 +9,11 @@ export default function MapPage() {
             <h1 className="text-3xl font-bold font-headline tracking-tight">Plantation Tracker</h1>
             <p className="text-muted-foreground">Monitoring blue carbon ecosystems worldwide.</p>
         </div>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <PlantationStats />
         </div>
-        <div className="grid gap-8 lg:grid-cols-3">
-            <div className="lg:col-span-2">
+        <div className="grid gap-8 md:grid-cols-3">
+            <div className="md:col-span-2">
                 <InteractiveMap />
             </div>
             <div>

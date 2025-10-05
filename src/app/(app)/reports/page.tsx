@@ -2,7 +2,7 @@ import DetailedReportsTable from "./components/detailed-reports-table";
 import EmissionTrendsChart from "./components/emission-trends-chart";
 import EmissionsByIndustryChart from "./components/emissions-by-industry-chart";
 import ReportStats from "./components/report-stats";
-
+import { ChartContainer } from "@/components/ui/chart";
 
 export default function ReportsPage() {
   return (
@@ -12,7 +12,7 @@ export default function ReportsPage() {
             <p className="text-muted-foreground">Detailed analysis of carbon emissions.</p>
         </div>
         <ReportStats />
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-8 md:grid-cols-2">
             <EmissionTrendsChart />
             <EmissionsByIndustryChart />
         </div>

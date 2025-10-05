@@ -14,7 +14,7 @@ const offsetProjects = [
 
 export default function CarbonOffsetSummary() {
   return (
-    <Card>
+    <Card className="h-full">
       <CardHeader>
         <CardTitle className="text-base font-medium">Carbon Offset Summary</CardTitle>
       </CardHeader>
@@ -32,7 +32,7 @@ export default function CarbonOffsetSummary() {
         </div>
         <div className="text-right mt-6">
             <Button variant="link" size="sm" asChild>
-                <Link href="#">Manage Credits</Link>
+                <Link href="/carbon-credits">Manage Credits</Link>
             </Button>
         </div>
       </CardContent>

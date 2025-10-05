@@ -11,9 +11,9 @@ export default function CarbonNeutralityPage() {
         <h1 className="text-3xl font-bold font-headline tracking-tight">Carbon Neutrality Index</h1>
         <p className="text-muted-foreground">Assessing progress towards carbon neutrality goals.</p>
       </div>
-      <div className="grid gap-8 lg:grid-cols-3">
+      <div className="grid gap-8 md:grid-cols-3">
         <OverallIndexScore />
-        <div className="lg:col-span-2 grid gap-8 md:grid-cols-2">
+        <div className="md:col-span-2 grid gap-8 sm:grid-cols-2">
             <IndustryProgressOverview />
             <CarbonOffsetSummary />
         </div>

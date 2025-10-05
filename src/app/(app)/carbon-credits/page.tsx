@@ -10,8 +10,8 @@ export default function CarbonCreditsPage() {
         <p className="text-muted-foreground">Manage and track your blue carbon credits.</p>
       </div>
       <CreditStats />
-      <div className="grid gap-8 lg:grid-cols-3">
-        <div className="lg:col-span-2">
+      <div className="grid gap-8 md:grid-cols-3">
+        <div className="md:col-span-2">
             <TransactionsTable />
         </div>
         <div>
