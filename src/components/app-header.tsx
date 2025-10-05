@@ -5,6 +5,7 @@ import { Bell, PanelLeft, Search, Moon, Sun } from 'lucide-react'
 import { useSidebar } from '@/components/ui/sidebar'
 import { Input } from '@/components/ui/input'
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 
 export default function AppHeader() {
   const { toggleSidebar } = useSidebar()
@@ -52,7 +53,9 @@ export default function AppHeader() {
             <span className="sr-only">Notifications</span>
         </Button>
 
-        <Button>Login</Button>
+        <Button asChild>
+          <Link href="/login">Login</Link>
+        </Button>
       </div>
     </header>
   )
