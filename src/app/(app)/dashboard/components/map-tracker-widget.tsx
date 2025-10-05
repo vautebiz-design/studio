@@ -2,7 +2,6 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Globe } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -28,9 +27,9 @@ export default function MapTrackerWidget() {
             />
         </div>
         <div className="w-full mt-4 flex justify-center">
-            <Button variant="outline" size="sm" asChild>
-                <Link href="/map">View Interactive Map</Link>
-            </Button>
+            <Link href="/map" passHref>
+                <Button variant="outline" size="sm">View Interactive Map</Button>
+            </Link>
         </div>
       </CardContent>
     </Card>
