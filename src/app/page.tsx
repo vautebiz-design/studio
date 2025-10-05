@@ -16,47 +16,44 @@ function WidgetSkeleton() {
 
 export default function DashboardPage() {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-6 md:gap-8">
       <div>
         <h1 className="text-3xl font-bold font-headline tracking-tight">Industry Dashboard</h1>
         <p className="text-muted-foreground">Welcome to your BlueBalance portal.</p>
       </div>
-      
+
       <Suspense fallback={<CarbonStatsSkeleton />}>
         <CarbonStats />
       </Suspense>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-        {/* Left column */}
         <div className="lg:col-span-2 space-y-6">
+          <Suspense fallback={<WidgetSkeleton />}>
+            <EmissionChart />
+          </Suspense>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Suspense fallback={<WidgetSkeleton />}>
-              <EmissionChart />
+              <MapTrackerWidget />
             </Suspense>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Suspense fallback={<WidgetSkeleton />}>
-                    <MapTrackerWidget />
-                </Suspense>
-                 <Suspense fallback={<WidgetSkeleton />}>
-                    <CarbonCreditsWidget />
-                </Suspense>
-            </div>
+            <Suspense fallback={<WidgetSkeleton />}>
+              <CarbonCreditsWidget />
+            </Suspense>
+          </div>
         </div>
-
-        {/* Right column */}
         <div className="lg:col-span-1 space-y-6">
-            <Suspense fallback={<WidgetSkeleton />}>
-                <Link href="/carbon-neutrality">
-                    <CarbonNeutralityWidget />
-                </Link>
-            </Suspense>
-            <Suspense fallback={<WidgetSkeleton />}>
-                <Link href="/ai-predictions">
-                    <AIPredictionsWidget />
-                </Link>
-            </Suspense>
-            <Suspense fallback={<WidgetSkeleton />}>
-                <AIEfficiencyTool />
-            </Suspense>
+           <Suspense fallback={<WidgetSkeleton />}>
+              <Link href="/carbon-neutrality">
+                  <CarbonNeutralityWidget />
+              </Link>
+          </Suspense>
+          <Suspense fallback={<WidgetSkeleton />}>
+              <Link href="/ai-predictions">
+                  <AIPredictionsWidget />
+              </Link>
+          </Suspense>
+          <Suspense fallback={<WidgetSkeleton />}>
+              <AIEfficiencyTool />
+          </Suspense>
         </div>
       </div>
     </div>
