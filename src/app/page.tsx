@@ -48,9 +48,7 @@ export default function DashboardPage() {
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <Suspense fallback={<WidgetSkeleton />}>
-          <Link href="/map" className="h-full">
-            <MapTrackerWidget />
-          </Link>
+          <MapTrackerWidget />
         </Suspense>
         <Suspense fallback={<WidgetSkeleton />}>
           <Link href="/carbon-credits" className="h-full">
